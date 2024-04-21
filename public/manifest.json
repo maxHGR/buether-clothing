@@ -1,0 +1,10 @@
+{
+  "name": "Ether clothing",
+  "icons": [
+    {
+      "src": "./../app/favicon.ico",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

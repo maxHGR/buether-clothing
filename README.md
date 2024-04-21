@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+State Management:
+  Redux toolkit
 
-## Getting Started
+Database:
+  Firebase
 
-First, run the development server:
+Styling: 
+  CSS Tailwind
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Redux toolkit example:
+https://github.com/ZhangMYihua/crwn-clothing-v2-redux-toolkit/blob/finished/src/routes/shop/shop.component.jsx
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+-------------------------------------
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Components:
 
-## Learn More
+  Navigation Bar
 
-To learn more about Next.js, take a look at the following resources:
+  Products / Product Card
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  Categories / category item/preview
+  
+  Sign-in/out / Sign-up / Register (Form input)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  Shopping Cart / icon / cart item / cart dropdown
 
-## Deploy on Vercel
+  Checkout / checkout item
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Pages:
+
+
+  Home Page
+
+
+  Shop Page
+
+
+  Checkout Page
+
+Store:
+
+  Cart
+  
+  Categories
+
+  Products
+
+  User
+
+---------------------------
+
+You can achieve dynamic routing in Next.js using dynamic route segments. Here's how you can do it:
+
+Create a dynamic route file: In your pages directory, create a new file that corresponds to the dynamic part of your route. For example, if your product URLs should look like /product/[productId], create a file named [productId].js inside a product directory (pages/product/[productId].js).
+
+Use getStaticPaths and getStaticProps (or getServerSideProps): In your dynamic route file, you can use the getStaticPaths and getStaticProps functions (or getServerSideProps for server-side rendering) to fetch the data for each product page.
+
+Here's an example of how you might set up your dynamic product page:
+
+
+// pages/product/[productId].js
+import { useRouter } from 'next/router';
+import { getProductById } from '../utils/firebase.utils';
+
+export async function getStaticPaths() {
+  // Replace this with code to fetch product IDs from your database
+  const productIds = await getAllProductIds();
+
+  const paths = productIds.map(id => ({
+    params: { productId: id.toString() },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const product = await getProductById(params.productId);
+
+  return { props: { product } };
+}
+
+export default function ProductPage({ product }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <h1>{product.name}</h1>
+      {/* Render other product details */}
+    </div>
+  );
+}
+
+In this example, getStaticPaths fetches all product IDs and returns them as an array of path objects. getStaticProps fetches the data for a single product based on the productId parameter. The ProductPage component then renders the product details.
+
+This setup will generate a static page for each product at build time. If you have a large number of products or your product data changes frequently, you might want to use getServerSideProps instead of getStaticPaths and getStaticProps to fetch the product data on each request.
+
