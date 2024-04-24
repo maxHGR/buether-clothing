@@ -15,10 +15,12 @@ const Category = () => {
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 
-  console.log(products);
+  // FIX
+  // make this component for category previews with associating link
+  // 
 
   return (
-      <div className=" mx-auto my-auto flex flex-wrap gap-5">
+      <div className="flex flex-wrap justify-around gap-y-4">
         {
           products && products.map((product) => {
             return (
