@@ -17,8 +17,8 @@ const Navbar = () => {
   const pathname = usePathname();
   const navbarItemsStyle = "text-xl my-auto"
   return (
-    <>
-    <div className={`${pathname === '/' ? 'navbar' : ''} bg-opacity-5 flex justify-around  p-2`}>
+    <div className={`${pathname === '/' ? 'navbar' : ''}`}>
+    <div className={` bg-opacity-5 flex justify-around  p-2`}>
       <Link href="/">
         <Image src={etherIcon} height={70} width={70} alt="3D triangle" />
       </Link>
@@ -33,7 +33,7 @@ const Navbar = () => {
         })
       }
     </div>
-    </>
+    </div>
   )
 }
 
