@@ -56,10 +56,10 @@ const SignUpForm = () => {
   const inputClass = "border p-1 my-2"
 
   return (
-    <div className='flex-col justify-around h-3/4 border border-black'>
+    <div className='flex-row justify-around h-3/4 border border-black'>
       <h2>Don&apos;t have an account?</h2>
       <span>Sign up with your email and password</span>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='flex-row justify-around h-full'>
         <input
           className={`${inputClass}`}
           label='Display Name'

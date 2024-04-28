@@ -1,11 +1,14 @@
 'use client'
 import { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
 
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
+  signOutUser,
 } from './../../utils/firebase.utils';
+import { signOut } from 'firebase/auth';
+import { signOutCurrentUser } from '@/app/store/user/user.reducer';
 
 
 const defaultFormFields = {
@@ -16,6 +19,7 @@ const defaultFormFields = {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
+  const dispatch = useDispatch();
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -41,6 +45,12 @@ const SignInForm = () => {
 
     setFormFields({ ...formFields, [name]: value });
   };
+
+  const handleSignOut = async () => {
+    await signOutUser();
+    dispatch(signOutCurrentUser());
+    console.log("signed out")
+  }
 
   return (
     <div className="flex-col justify-between gap-2 my-auto mx-auto border-2 p-10">
@@ -68,17 +78,18 @@ const SignInForm = () => {
           placeholder='password'
           value={password}
         />
-        <div className="flex justify-between">
-          <button type='submit' className='border border-green-300 p-2 rounded-md'>Sign In</button>
+        <div className="flex-row justify-between">
+          <button type='submit' className='base-1/2 border border-green-300 p-1 my-2 mr-2 rounded-md'>Sign In</button>
           <button
             type='button'
             onClick={signInWithGoogle}
-            className='border border-black p-2 rounded-md'
+            className='base-1/2 border border-black p-1 my-2  rounded-md'
           >
             Sign In With Google
           </button>
         </div>
       </form>
+      <button onClick={handleSignOut} className='mt-10 ml-36 border border-red-400 bg-red-300 p-1 rounded-md'>Sign Out</button>
     </div>
   );
 };
