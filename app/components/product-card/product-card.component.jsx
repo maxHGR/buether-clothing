@@ -3,7 +3,7 @@ import Image from "next/image"
 import { useDispatch } from "react-redux";
 
 import { addItemToCart } from "@/app/store/cart/cart.reducer";
-import { Bounce, ToastContainer, toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -12,21 +12,16 @@ export const ProductCard = ({product, category}) => {
   const dispatch = useDispatch();
 
   const addProduct = () => dispatch(addItemToCart(product));
-  const notify = () => toast("added to cart", {
-    position: "bottom-right",
-    autoClose: 2000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
+
+  const cartNotify = () => toast.success("added to cart", {
     progress: undefined,
-    theme: "light",
+    theme: "colored",
     transition: Bounce,
   });
 
   const onClickHandler = () => {
     addProduct();
-    notify();
+    cartNotify();
   }
 
   return (
@@ -37,10 +32,7 @@ export const ProductCard = ({product, category}) => {
       <h1 className="text-xl mt-1">{name}</h1>
       <p>{category}</p>
       <h2 className="text-lg">{`€${price}`}</h2>
-      <div>
-        <button className="border p-1 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
-        
-      </div>
+      <button className="border p-1 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
     </div>
   )
 }

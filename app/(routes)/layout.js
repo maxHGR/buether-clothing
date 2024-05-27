@@ -18,11 +18,15 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className}`}>
         <StoreProvider>
           <ToastContainer 
-            position="top-right"
+            position="top-center"
             autoClose={2000}
             hideProgressBar={true}
-            theme="light"
-            transition={Bounce}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnHover
+            theme="colored"
+            transition= "Bounce"
           />
           <Navbar />
           {children}

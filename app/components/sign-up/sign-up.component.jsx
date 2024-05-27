@@ -1,5 +1,7 @@
 'use client'
 import { useState } from 'react';
+import { Bounce, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -22,6 +24,12 @@ const SignUpForm = () => {
     setFormFields(defaultFormFields);
   };
 
+  const notify = () => toast("successfully signed up", {
+    progress: undefined,
+    theme: "colored",
+    transition: Bounce,
+  });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -37,6 +45,7 @@ const SignUpForm = () => {
       );
 
       await createUserDocumentFromAuth(user, { displayName });
+      notify();
       resetFormFields();
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
@@ -56,7 +65,7 @@ const SignUpForm = () => {
   const inputClass = "border p-1 my-2"
 
   return (
-    <div className='flex-row justify-around h-3/4 border border-black'>
+    <div className='flex-row justify-around h-3/4 my-auto border border-black'>
       <h2>Don&apos;t have an account?</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit} className='flex-row justify-around h-full'>

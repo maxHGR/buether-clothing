@@ -24,7 +24,7 @@ const Checkout = () => {
       })}
     </div>
     <div className='my-8 ml-auto'>
-      <h2>Total: {cartTotal}</h2>
+      <h2>Total: {cartTotal.toFixed(2)}</h2>
     </div>
   </div>
   )

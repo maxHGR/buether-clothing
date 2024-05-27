@@ -1,13 +1,14 @@
 'use client'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast, Bounce } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
   signOutUser,
 } from './../../utils/firebase.utils';
-import { signOut } from 'firebase/auth';
 import { signOutCurrentUser } from '@/app/store/user/user.reducer';
 
 
@@ -21,12 +22,27 @@ const SignInForm = () => {
   const { email, password } = formFields;
   const dispatch = useDispatch();
 
+  const signInNotify = () => toast.info("successfully signed in", {
+    progress: undefined,
+    theme: "colored",
+    transition: Bounce,
+  });
+
+  const signOutNotify = () => toast.info("signed out", {
+    progress: undefined,
+    theme: "colored",
+    transition: Bounce,
+  });
+
+
+
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
+    signInNotify();
   };
 
   const handleSubmit = async (event) => {
@@ -38,6 +54,7 @@ const SignInForm = () => {
     } catch (error) {
       console.log('user sign in failed', error);
     }
+    signInNotify();
   };
 
   const handleChange = (event) => {
@@ -49,11 +66,11 @@ const SignInForm = () => {
   const handleSignOut = async () => {
     await signOutUser();
     dispatch(signOutCurrentUser());
-    console.log("signed out")
+    signOutNotify();
   }
 
   return (
-    <div className="flex-col justify-between gap-2 my-auto mx-auto border-2 p-10">
+    <div className="flex-col justify-between gap-2 border-2 p-10">
       <h2 className=''>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
