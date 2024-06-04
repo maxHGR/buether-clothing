@@ -1,20 +1,26 @@
 'use client'
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   selectCartItems,
   selectCartTotal,
+  selectIsCartOpen,
 } from '../../store/cart/cart.selector';
 import CheckoutItem from '@/app/components/checkout-item/checkout-item.component';
+import { useEffect } from 'react';
+import { setIsCartOpen } from '@/app/store/cart/cart.reducer';
 
 
 const Checkout = () => {
+  const dispatch = useDispatch();
+
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
-
-  console.log(cartItems)
+  useEffect(() => {
+    dispatch(setIsCartOpen(false));
+  }, [])
 
   return (
     <div className='flex-row justify-between'>

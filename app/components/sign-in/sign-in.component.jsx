@@ -106,7 +106,7 @@ const SignInForm = () => {
           </button>
         </div>
       </form>
-      <button onClick={handleSignOut} className='mt-10 ml-36 border border-red-400 bg-red-300 p-1 rounded-md'>Sign Out</button>
+      
     </div>
   );
 };

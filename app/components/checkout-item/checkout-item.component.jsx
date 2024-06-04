@@ -21,15 +21,15 @@ const CheckoutItem = ({cartItem}) => {
       <div>
         <Image src={imageUrl} alt={`${name}`} width={40} height={40}/>
       </div>
-      <span>{name}</span>
-      <div className='flex justify-between w-1/5'>
+      <span className='w-1/5'>{name}</span>
+      <div className='flex justify-between w-1/6 cursor-pointer'>
         <div onClick={removeItemHandler}>&#10094;</div>
         {quantity}
         <div onClick={addItemHandler}>&#10095;</div>
       </div>
       <span>{price}</span>
       <br/>
-      <button onClick={clearItemHandler}>&#10005;</button>
+      <button className='cursor-pointer' onClick={clearItemHandler}>&#10005;</button>
     </div>
   )
 }
