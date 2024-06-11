@@ -15,13 +15,18 @@ import { selectCurrentUser } from "@/app/store/user/user.selector"
 import CartIcon from "../cart-icon/cart-icon.component"
 import { selectIsCartOpen } from "@/app/store/cart/cart.selector"
 import CartDropdown from "../cart-dropdown/cart-dropdown.component"
+import { setIsCartOpen } from "@/app/store/cart/cart.reducer"
 
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isCartOpen = useSelector(selectIsCartOpen);
-
+  
+  const params = useParams();
+  const pathname = usePathname();
+  const navbarItemsStyle = "text-xl my-auto";
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
@@ -32,6 +37,10 @@ const Navbar = () => {
 
     return unsubscribe;
   }, []);
+
+  useEffect(() => {
+    dispatch(setIsCartOpen(false));
+  }, [pathname])
 
   const signOutNotify = () => toast.info("signed out", {
     progress: undefined,
@@ -52,9 +61,6 @@ const Navbar = () => {
     "sneakers",
     "womens",
   ]);
-  const params = useParams();
-  const pathname = usePathname();
-  const navbarItemsStyle = "text-xl my-auto";
 
   return (
     <div className={`${pathname === '/' ? 'navbar' : ''}`}>

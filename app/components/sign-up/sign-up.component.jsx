@@ -62,13 +62,15 @@ const SignUpForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const inputClass = "border p-1 my-2"
+  const inputClass = "border rounded-md p-1 my-2";
 
   return (
-    <div className='flex-row justify-around h-3/4 my-auto border border-black'>
-      <h2>Don&apos;t have an account?</h2>
-      <span>Sign up with your email and password</span>
-      <form onSubmit={handleSubmit} className='flex-row justify-around h-full'>
+    <div className='flex-row sm:basis-1/3 justify-around h-full border border-black p-4'>
+      <div>
+        <h2>Don&apos;t have an account?</h2>
+        <span className='text-xs'>Sign up with your email and password</span>
+      </div>
+      <form onSubmit={handleSubmit} className='flex-row justify-around'>
         <input
           className={`${inputClass}`}
           label='Display Name'
@@ -79,7 +81,7 @@ const SignUpForm = () => {
           name='displayName'
           value={displayName}
         />
-
+        <br/>
         <input
           className={`${inputClass}`}
           label='Email'
@@ -90,7 +92,7 @@ const SignUpForm = () => {
           name='email'
           value={email}
         />
-
+        <br/>
         <input
           className={`${inputClass}`}
           label='Password'
@@ -101,7 +103,7 @@ const SignUpForm = () => {
           name='password'
           value={password}
         />
-
+        <br/>
         <input
           className={`${inputClass}`}
           label='Confirm Password'
@@ -113,7 +115,7 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
         <br/>
-        <button type='submit' className='ml-auto border border-black p-1 rounded-md'>Sign Up</button>
+        <button type='submit' className='mt-4 border border-black p-1 rounded-md'>Sign Up</button>
       </form>
     </div>
   );

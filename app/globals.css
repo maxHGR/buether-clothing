@@ -9,7 +9,14 @@
 }
 
 body {
+  width: auto;
+  height: auto;
   color: black;
+}
+
+html {
+  width: auto;
+  height: auto;
 }
 
 .landingImage {

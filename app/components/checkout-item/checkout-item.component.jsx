@@ -17,13 +17,18 @@ const CheckoutItem = ({cartItem}) => {
 
 
   return (
-    <div className='flex justify-around items-center border border-black p-2 h-30'>
+    <div className='flex justify-around items-center border-b border-black p-2 h-30'>
       <div>
         <Image src={imageUrl} alt={`${name}`} width={40} height={40}/>
       </div>
       <span className='w-1/5'>{name}</span>
       <div className='flex justify-between w-1/6 cursor-pointer'>
-        <div onClick={removeItemHandler}>&#10094;</div>
+        { quantity <= 1 ? (
+            <div onClick={clearItemHandler}>&#x1F5D1;</div>
+          ) : (
+            <div onClick={removeItemHandler}>&#10094;</div>
+          )
+        }
         {quantity}
         <div onClick={addItemHandler}>&#10095;</div>
       </div>

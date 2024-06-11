@@ -18,13 +18,9 @@ const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
-  useEffect(() => {
-    dispatch(setIsCartOpen(false));
-  }, [])
-
   return (
     <div className='flex-row justify-between'>
-    <div className="flex-row">
+    <div className="flex-row border-t border-black">
       {cartItems.map((cartItem) => {
         return <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
       })}
