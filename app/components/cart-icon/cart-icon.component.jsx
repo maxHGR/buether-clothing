@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link';
-import ShoppingIcon from '@/app/assets/shopping-bag.svg'
+import ShoppingIcon from '../../assets/shopping-bag.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCartCount, selectIsCartOpen } from '@/app/store/cart/cart.selector';
-import { setIsCartOpen } from '@/app/store/cart/cart.reducer';
+import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector';
+import { setIsCartOpen } from '../../store/cart/cart.reducer';
 
 
 const CartIcon = () => {

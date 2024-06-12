@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
-import { selectCategoriesMap } from "@/app/store/categories/category.selector";
-import ProductCard from "@/app/components/product-card/product-card.component";
+import { selectCategoriesMap } from "../../../store/categories/category.selector";
+import ProductCard from "../../../components/product-card/product-card.component";
+
 
 
 const Category = () => {

@@ -1,7 +1,8 @@
-import { selectCartItems } from "@/app/store/cart/cart.selector"
+
 import { useDispatch, useSelector } from "react-redux"
 import CartItem from "../cart-item/cart-item.component";
 import Link from "next/link";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 
 const CartDropdown = () => {

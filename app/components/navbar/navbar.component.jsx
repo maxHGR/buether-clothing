@@ -5,17 +5,17 @@ import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useParams, usePathname } from "next/navigation"
 import { useDispatch } from "react-redux"
-import { onAuthStateChangedListener, createUserDocumentFromAuth, signOutUser } from "@/app/utils/firebase.utils"
-import { setCurrentUser, signOutCurrentUser } from "@/app/store/user/user.reducer"
+import { onAuthStateChangedListener, createUserDocumentFromAuth, signOutUser } from "../../utils/firebase.utils"
+import { setCurrentUser, signOutCurrentUser } from "../../store/user/user.reducer"
 import { toast, Bounce } from "react-toastify";
 
 
 import etherIcon from "./../../assets/ether-logo.ico"
-import { selectCurrentUser } from "@/app/store/user/user.selector"
+import { selectCurrentUser } from "../../store/user/user.selector"
 import CartIcon from "../cart-icon/cart-icon.component"
-import { selectIsCartOpen } from "@/app/store/cart/cart.selector"
+import { selectIsCartOpen } from "../../store/cart/cart.selector"
 import CartDropdown from "../cart-dropdown/cart-dropdown.component"
-import { setIsCartOpen } from "@/app/store/cart/cart.reducer"
+import { setIsCartOpen } from "../../store/cart/cart.reducer"
 
 
 const Navbar = () => {

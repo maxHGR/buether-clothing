@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { useDispatch } from "react-redux";
 
-import { addItemToCart } from "@/app/store/cart/cart.reducer";
+import { addItemToCart } from "../../store/cart/cart.reducer";
 import { Bounce, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -32,7 +32,7 @@ export const ProductCard = ({product, category}) => {
       <h1 className="text-xl mt-1">{name}</h1>
       <p>{category}</p>
       <h2 className="text-lg">{`€${price}`}</h2>
-      <button className="border p-1 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
+      <button className="border border-black p-1 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
     </div>
   )
 }

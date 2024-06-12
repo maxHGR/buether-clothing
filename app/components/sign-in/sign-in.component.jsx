@@ -9,7 +9,7 @@ import {
   signInWithGooglePopup,
   signOutUser,
 } from './../../utils/firebase.utils';
-import { signOutCurrentUser } from '@/app/store/user/user.reducer';
+import { signOutCurrentUser } from '../../store/user/user.reducer';
 
 
 const defaultFormFields = {
@@ -69,7 +69,7 @@ const SignInForm = () => {
   }
 
   return (
-    <div className="flex-col sm:basis-1/3 justify-between border border-black p-4">
+    <div className="flex-col justify-between px-3">
       <div>
         <h2>Already have an account?</h2>
         <span className='text-xs'>Sign in with your email and password</span>
@@ -97,12 +97,12 @@ const SignInForm = () => {
           value={password}
         />
         <div className="flex-row justify-between">
-          <button type='submit' className='border border-green-300 p-1 my-2 rounded-md'>Sign In</button>
+          <button type='submit' className='border border-gray-800 p-1 my-2 rounded-md'>Sign In</button>
           <br/>
           <button
             type='button'
             onClick={signInWithGoogle}
-            className='base-1/2 border border-black p-1 my-2 rounded-md'
+            className='base-1/2 bg-blue-600 text-white p-1 my-2 rounded-md'
           >
             Sign In With Google
           </button>

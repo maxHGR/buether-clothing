@@ -1,9 +1,9 @@
 "use client"
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setCategories } from "@/app/store/categories/category.reducer";
-import { getCategoriesAndDocuments } from "@/app/utils/firebase.utils";
-import Category from "@/app/components/category/category.component";
+import { setCategories } from "../../store/categories/category.reducer";
+import { getCategoriesAndDocuments } from "../../utils/firebase.utils";
+import Category from "../../components/category/category.component";
 import Link from "next/link";
 
 const Shop = () => {

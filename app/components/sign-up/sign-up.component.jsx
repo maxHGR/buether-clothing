@@ -65,7 +65,7 @@ const SignUpForm = () => {
   const inputClass = "border rounded-md p-1 my-2";
 
   return (
-    <div className='flex-row sm:basis-1/3 justify-around h-full border border-black p-4'>
+    <div className='flex-row px-3'>
       <div>
         <h2>Don&apos;t have an account?</h2>
         <span className='text-xs'>Sign up with your email and password</span>
@@ -115,7 +115,7 @@ const SignUpForm = () => {
           value={confirmPassword}
         />
         <br/>
-        <button type='submit' className='mt-4 border border-black p-1 rounded-md'>Sign Up</button>
+        <button type='submit' className='bg-gray-800 text-white p-1 my-2 rounded-md'>Sign Up</button>
       </form>
     </div>
   );
