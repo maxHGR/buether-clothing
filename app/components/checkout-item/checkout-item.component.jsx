@@ -12,9 +12,10 @@ const CheckoutItem = ({cartItem}) => {
   const dispatch = useDispatch();
 
   const clearItemHandler = () => dispatch(clearItemFromCart(cartItem));
-  const addItemHandler = () => dispatch(addItemToCart(cartItem));
+  const addItemHandler = () => {
+    dispatch(addItemToCart(cartItem));
+  }
   const removeItemHandler = () => dispatch(removeItemFromCart(cartItem));
-
 
   return (
     <div className='flex justify-around items-center border-b border-black p-2 h-30'>
@@ -32,7 +33,7 @@ const CheckoutItem = ({cartItem}) => {
         {quantity}
         <div onClick={addItemHandler}>&#10095;</div>
       </div>
-      <span>{price}</span>
+      <div>{(price * quantity).toFixed(2)}</div>
       <br/>
       <button className='cursor-pointer' onClick={clearItemHandler}>&#10005;</button>
     </div>

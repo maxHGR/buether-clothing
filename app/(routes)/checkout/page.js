@@ -1,8 +1,5 @@
 'use client'
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 
 import {
   selectCartItems,
@@ -10,22 +7,13 @@ import {
   selectIsCartOpen,
 } from '../../store/cart/cart.selector';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
-import PaymentForm from "../../components/payment-form/payment-form.component.tsx";
-import { useEffect } from 'react';
-import { setIsCartOpen } from '../../store/cart/cart.reducer';
-
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-);
+import Link from 'next/link';
 
 
 const Checkout = () => {
-  const dispatch = useDispatch();
-
-  const cartItems = useSelector(selectCartItems);
-  const cartTotal = useSelector(selectCartTotal);
-
+    // State variable to store the client secret received from the server
+    const cartItems = useSelector(selectCartItems);
+    const cartTotal = useSelector(selectCartTotal);
 
   return (
     <div className='flex-row justify-between'>
@@ -34,13 +22,11 @@ const Checkout = () => {
         return <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
       })}
     </div>
-    <div className='my-8 ml-auto'>
-      <h2>Total: {cartTotal.toFixed(2)}</h2>
+    <div className='flex justify-end my-8'>
+      <h2 className='mr-[10vw]'>Total: {cartTotal.toFixed(2)}</h2>
     </div>
-    <div className="flex  justify-center items-center">
-      <Elements stripe={stripePromise}>
-        <PaymentForm />
-      </Elements>
+    <div className='flex justify-end'>
+      <Link href="/payment" className='border bg-indigo-500 text-white rounded-md p-2 mr-[10vw] text-lg '>Payment</Link>
     </div>
   </div>
   )

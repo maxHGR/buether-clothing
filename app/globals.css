@@ -20,7 +20,7 @@ html {
 }
 
 .landingImage {
-  background-image: url("./assets/guy-mountain.jpg");
+  background-image: url("./assets/woman-sky.jpg");
   /*Parallax Effect*/
   background-attachment: fixed;
   background-position: center;

@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/components/checkout-form/payment-form.component.jtsx", "app/components/checkout-form/checkout-form.component.jsx", "app/api/create-payment-intent/route.jsx"  ],
   "exclude": [
     "node_modules"
   ]

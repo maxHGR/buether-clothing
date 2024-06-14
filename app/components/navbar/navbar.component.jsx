@@ -11,6 +11,8 @@ import { toast, Bounce } from "react-toastify";
 
 
 import etherIcon from "./../../assets/ether-logo.ico"
+import profileIcon from '../../assets/profile.svg'
+
 import { selectCurrentUser } from "../../store/user/user.selector"
 import CartIcon from "../cart-icon/cart-icon.component"
 import { selectIsCartOpen } from "../../store/cart/cart.selector"
@@ -42,17 +44,6 @@ const Navbar = () => {
     dispatch(setIsCartOpen(false));
   }, [pathname])
 
-  const signOutNotify = () => toast.info("signed out", {
-    progress: undefined,
-    theme: "colored",
-    transition: Bounce,
-  });
-
-  const handleSignOut = async () => {
-    await signOutUser();
-    dispatch(signOutCurrentUser());
-    signOutNotify();
-  };
 
   const [paths, setPaths] = useState([
     "hats", 
@@ -71,12 +62,13 @@ const Navbar = () => {
       <Link href="/shop" className={navbarItemsStyle}>Shop</Link>
       {
         currentUser ? (
-          <button className={navbarItemsStyle} onClick={handleSignOut}>Sign-Out</button>
+          <Link href="/authentication" className={navbarItemsStyle}>
+            <Image src={profileIcon} height={30} width={30} alt="profile icon" />
+          </Link>
         ) : (
           <Link href="/authentication" className={navbarItemsStyle}>Sign-In</Link>
         )
       }
-
       <CartIcon />
     </div>
     <div className="w-full flex justify-around mb-5">
