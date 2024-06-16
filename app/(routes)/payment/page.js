@@ -22,7 +22,7 @@ const Payment = () => {
     const createPaymentIntent = async () => {
       // Fetch the client secret from the server
       const { data } = await axios.post("/api/create-payment-intent", {
-        data: { amount: cartTotal ? cartTotal : 10 }  // sent ammount or sample 
+        data: { amount: cartTotal ? cartTotal : 0.5 }  // sent ammount or sample 
       });
       setClientSecret(data)
     }

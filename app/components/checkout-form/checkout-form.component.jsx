@@ -7,6 +7,9 @@ import {
   useElements
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation'
+ 
+ 
 
 // CheckoutForm component definition
 export default function CheckoutForm() {
@@ -14,6 +17,7 @@ export default function CheckoutForm() {
   const stripe = useStripe();
   // Access the Elements instance using the useElements hook
   const elements = useElements();
+  const router = useRouter();
 
   // State variables for displaying messages and loading state
   const [message, setMessage] = useState(null);
@@ -71,7 +75,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Specify return URL after payment completion
-        return_url: "http://localhost:3000",
+        return_url: "https://ether-clothing.vercel.app/payment-success",
       },
     });
 
@@ -86,7 +90,8 @@ export default function CheckoutForm() {
     }
 
     // Reset loading state
-    setIsLoading(false);
+    await setIsLoading(false)
+    router.push('/payment-success');
   };
 
   // Payment element options
