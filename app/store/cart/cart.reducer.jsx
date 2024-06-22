@@ -39,12 +39,7 @@ const clearCartItem = (cartItems, cartItemToClear) =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
 
-const emptyCartItems = (cartItems) => {
-  for(let i = 0; i < cartItems.length; i++) {
-    cartItems.pop();
-  }
-  return cartItems;
-}
+
 
 const CART_INITIAL_STATE = {
   isCartOpen: false,

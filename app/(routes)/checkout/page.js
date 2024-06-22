@@ -17,7 +17,10 @@ const Checkout = () => {
 
   return (
     <div className='flex-row justify-between'>
-    <div className="flex-row border-t border-black">
+    <div className='flex justify-center mb-10'>
+      <h1 className='text-2xl'>Checkout</h1>
+    </div>
+    <div className="flex-row  border-black">
       {cartItems.map((cartItem) => {
         return <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
       })}

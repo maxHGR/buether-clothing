@@ -54,7 +54,7 @@ const Navbar = () => {
   ]);
 
   return (
-    <div className={`${pathname === '/' ? 'navbar' : ''}`}>
+    <div className={`${pathname === '/' ? 'navbar' : 'border-b border-black mb-10'}`}>
     <div className={` bg-opacity-5 flex justify-around  p-2`}>
       <Link href="/">
         <Image src={etherIcon} height={70} width={70} alt="3D triangle" />

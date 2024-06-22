@@ -8,8 +8,6 @@ const middleWares =[process.env.NODE_ENV === 'development' && logger].filter(
 );
 
 
-
-
 export const makeStore = () => {
   return configureStore({
       reducer: rootReducer,

@@ -13,7 +13,7 @@ import { signOutCurrentUser } from "../../store/user/user.reducer"
 const Authentication = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const formContainer = 'flex basis-1/1 sm:basis-1/3 h-[50vh] min-h-fit min-w-max justify-center items-center border-2 border-indigo-500 rounded-lg';
+  const formContainer = 'flex basis-1/1 sm:basis-1/3 h-[55vh] min-h-fit min-w-max mb-5 p-2 justify-center items-center border-2 border-indigo-500 rounded-lg';
 
   const signOutNotify = () => toast.info("signed out", {
     progress: undefined,
@@ -39,12 +39,12 @@ const Authentication = () => {
             <div className="mt-[5vh]">{`Email: ${currentUser.email}`}</div>
         </div>
         <div className="flex justify-end mr-[5vw]">
-            <button onClick={handleSignOut} className="p-2 mt-14 mb-5 bg-red-600 text-white rounded-md">Sign out</button>
+            <button onClick={handleSignOut} className=" mt-14 mb-5 bg-red-600 text-white rounded-md">Sign out</button>
         </div>
         
         </div>
       ) : (
-        <div className='flex flex-row flex-wrap justify-around items-center lg:max-w-[70vw] lg:mx-auto'>
+        <div className='flex flex-row flex-wrap justify-around items-center lg:max-w-[70vw] lg:max-h-[30vh] lg:mx-auto'>
         <div className={formContainer}>
           <SignInForm />
         </div>

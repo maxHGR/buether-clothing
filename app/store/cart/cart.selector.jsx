@@ -13,10 +13,10 @@ export const selectCartItems = createSelector(
 );
 
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
-  cartItems.reduce(
+  Number(cartItems.reduce(
     (total, cartItem) => total + cartItem.quantity * cartItem.price,
     0
-  )
+  ).toFixed(2))
 );
 
 export const selectCartCount = createSelector([selectCartItems], (cartItems) =>

@@ -18,7 +18,7 @@ const CheckoutItem = ({cartItem}) => {
   const removeItemHandler = () => dispatch(removeItemFromCart(cartItem));
 
   return (
-    <div className='flex justify-around items-center border-b border-black p-2 h-30'>
+    <div className='flex justify-around items-center border-y border-black p-2 h-30'>
       <div>
         <Image src={imageUrl} alt={`${name}`} width={40} height={40}/>
       </div>
