@@ -20,7 +20,7 @@ const Category = () => {
 
   
   return (
-    <div className="flex flex-wrap justify-around gap-y-4">
+    <div className="flex flex-wrap justify-around ">
       {
         products && products.map((product) => {
           return (

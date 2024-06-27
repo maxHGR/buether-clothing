@@ -1,0 +1,15 @@
+{
+  "name": "Ether Clothing",
+  "short_name": "ether-clothing",
+  "icons": [
+    {
+      "src": "/app/assets/ether-logo.ico",
+      "sizes": "any"
+    }
+  ],
+  "start-url": "https://ether-clothing.vercel.app/",
+  "display": "fullscreen",
+  "background_color": "#EEF2FF",
+  "theme_color": "#6366F1"
+
+}
