@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Ether clothing",
   description: "",
+  manifest: "manifest.json"
 };
 
 export default function RootLayout({ children }) {
