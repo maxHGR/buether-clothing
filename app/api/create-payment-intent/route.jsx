@@ -18,7 +18,7 @@ export async function POST(NextRequest) {
   try {
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: Number(amount) * 100, // Calculate order amount
+    amount:  Math.round(Number(amount) * 100), // Calculate order amount and round to nearest integer to avoid floating point precission issue
     currency: "eur", 
     automatic_payment_methods: {
       enabled: true, // Enable automatic payment methods

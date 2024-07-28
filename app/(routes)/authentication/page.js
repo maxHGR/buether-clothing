@@ -39,7 +39,7 @@ const Authentication = () => {
             <div className="mt-[5vh]">{`Email: ${currentUser.email}`}</div>
         </div>
         <div className="flex justify-end mr-[5vw]">
-            <button onClick={handleSignOut} className=" mt-14 mb-5 bg-red-600 text-white rounded-md">Sign out</button>
+            <button onClick={handleSignOut} className=" mt-14 mb-5 p-2 bg-red-600 text-white rounded-md">Sign out</button>
         </div>
         
         </div>
