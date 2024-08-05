@@ -19,15 +19,6 @@ html {
   height: auto;
 }
 
-.landingImage {
-  background-image: url("./assets/free-sky.jpg");
-  /*Parallax Effect*/
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 
 .navbar {
   position: fixed; /* or absolute */
@@ -35,4 +26,10 @@ html {
   left: 0;
   width: 100%;
   z-index: 1000; /* any high value */
+  background-color: #F7D65A;
+  box-shadow: 0px 5px 20px 0px rgba(0,0,0,0.1);
+}
+
+.button-color {
+  background-color: #F7D65A;
 }

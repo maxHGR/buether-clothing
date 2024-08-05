@@ -40,7 +40,7 @@ const options = {
 
   return (
     <>
-      <div className="flex  justify-center items-center">
+      <div className="flex justify-center items-center mt-20">
           { clientSecret ? (
         <Elements stripe={stripePromise} options={options}>
           <CheckoutForm />

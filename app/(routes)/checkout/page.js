@@ -29,7 +29,7 @@ const Checkout = () => {
       <h2 className='mr-[10vw]'>Total: {cartTotal.toFixed(2)}</h2>
     </div>
     <div className='flex justify-end'>
-      <Link href="/payment" className='border bg-indigo-500 text-white rounded-md p-2 mr-[10vw] text-lg '>Payment</Link>
+      <Link href="/payment" className='bg-[#F7D65A] text-black rounded-md p-2 mr-[10vw] text-lg '>Payment</Link>
     </div>
   </div>
   )

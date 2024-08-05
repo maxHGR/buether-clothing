@@ -34,7 +34,7 @@ const Authentication = () => {
       { currentUser !== null ? (
         <div className="flex-col justify-around ">
           
-        <div className="justify-center gap-10 p-[5vw] border bg-indigo-500 text-white rounded-md h-full w-[100vw]">
+        <div className="justify-center gap-10 p-[5vw] mx-auto bg-[#F7D65A] rounded-md h-full w-[80vw]">
             <div className=" text-xl">{`Hello ${currentUser.displayName}`}</div>
             <div className="mt-[5vh]">{`Email: ${currentUser.email}`}</div>
         </div>

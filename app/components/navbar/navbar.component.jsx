@@ -10,7 +10,8 @@ import { setCurrentUser, signOutCurrentUser } from "../../store/user/user.reduce
 import { toast, Bounce } from "react-toastify";
 
 
-import etherIcon from "./../../assets/ether-logo.ico"
+import etherIconWhite from "./../../assets/icons/ether-clothing-favicon-white.png"
+import etherIconYellow from './../../assets/icons/ether-clothing-favicon-color.png'
 import profileIcon from '../../assets/profile.svg'
 
 import { selectCurrentUser } from "../../store/user/user.selector"
@@ -55,9 +56,9 @@ const Navbar = () => {
 
   return (
     <div className={`${pathname === '/' ? 'navbar' : 'border-b border-black mb-10'}`}>
-    <div className={` bg-opacity-5 flex justify-around  p-2`}>
-      <Link href="/">
-        <Image src={etherIcon} height={70} width={70} alt="3D triangle" />
+    <div className={` bg-opacity-5 flex justify-around p-2`}>
+      <Link href="/" className="max-w-[100vw]">
+        <Image src={ pathname === '/' ? etherIconWhite : etherIconYellow } height={70} width={70} alt="Ether Clothing icon" />
       </Link>
       <Link href="/shop" className={navbarItemsStyle}>Shop</Link>
       {
@@ -71,7 +72,7 @@ const Navbar = () => {
       }
       <CartIcon />
     </div>
-    <div className="w-full flex justify-around mb-5">
+    <div className="w-full flex justify-around">
       {
         pathname.startsWith('/shop') ? (
           paths.map((path) => {

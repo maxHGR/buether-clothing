@@ -3,7 +3,7 @@
   "short_name": "ether-clothing",
   "icons": [
     {
-      "src": "/app/assets/ether-logo.ico",
+      "src": "/app/assets/icons/ether-clothing-favicon-color.png",
       "sizes": "any"
     }
   ],
