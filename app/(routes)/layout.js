@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Buether",
   description: "",
-  manifest: "manifest.json"
+  manifest: "manifest.js",
 };
 
 export default function RootLayout({ children }) {
