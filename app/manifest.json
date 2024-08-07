@@ -1,15 +1,15 @@
 {
-  "name": "Ether Clothing",
-  "short_name": "ether-clothing",
+  "name": "Buether",
   "icons": [
     {
-      "src": "/app/assets/icons/ether-clothing-favicon-color.png",
-      "sizes": "any"
+      "src": "/app/assets/icons/logo/ether-clothing-favicon-color.png",
+      "sizes": "any",
+      "type": "image/png"
     }
   ],
   "start-url": "https://ether-clothing.vercel.app/",
   "display": "fullscreen",
-  "background_color": "#EEF2FF",
-  "theme_color": "#6366F1"
+  "background_color": "#F7D65A",
+  "theme_color": "#F7D65A"
 
 }

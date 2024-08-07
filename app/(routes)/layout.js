@@ -8,7 +8,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ether clothing",
+  title: "Buether",
   description: "",
   manifest: "manifest.json"
 };
