@@ -38,6 +38,9 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 const clearCartItem = (cartItems, cartItemToClear) =>
   cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
 
+const emptyCartItems = (cartItems) => {
+  return (cartItems.filter((cartItem) => cartItem.quantity === 0))
+}
 
 
 
@@ -63,7 +66,7 @@ export const cartSlice = createSlice({
       state.cartItems = clearCartItem(state.cartItems, action.payload);
     },
     emptyCart(state) {
-      state.cartItems = [];
+      state.cartItems = emptyCartItems(state.cartItems);
     }
   },
 });

@@ -7,8 +7,9 @@ export default function manifest() {
     theme_color: '#F7D65A',
     icons: [
       {
-        src: '/app/assets/icons/logo/buether.favicon.svg',
-        sizes: 'any',
+        src: '/public/favicon.ico',
+        sizes: '512x512',
+        types: 'image/png'
       },
     ],
   }

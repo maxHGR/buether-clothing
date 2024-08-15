@@ -8,6 +8,8 @@ import {
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../../store/cart/cart.reducer";
  
  
 
@@ -15,6 +17,7 @@ import { useRouter } from 'next/navigation'
 export default function CheckoutForm() {
   // Access the Stripe instance using the useStripe hook
   const stripe = useStripe();
+  const dispatch = useDispatch();
   // Access the Elements instance using the useElements hook
   const elements = useElements();
   const router = useRouter();
@@ -71,27 +74,31 @@ export default function CheckoutForm() {
     setIsLoading(true);
 
     // Confirm payment with Stripe
-    const { error } = await stripe.confirmPayment({
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
-      confirmParams: {
-        // Specify return URL after payment completion
-        return_url: "https://ether-clothing.vercel.app/payment-success",
-      },
+      redirect: 'if_required',
     });
 
     // Handle payment confirmation result
     if (error) {
-      // If there's an error, display error message
       if (error.type === "card_error" || error.type === "validation_error") {
         setMessage(error.message);
+        
       } else {
         setMessage("An unexpected error occurred.");
       }
+
     }
 
     // Reset loading state
     await setIsLoading(false)
-    router.push('/payment-success');
+    if(paymentIntent) {
+
+      // call API to save purchase in account of user <<<<<<<<<<<<<<<<<<<<<<<<<
+
+      dispatch(emptyCart());
+      router.push('/payment-success')
+    }
   };
 
   // Payment element options
@@ -111,7 +118,7 @@ export default function CheckoutForm() {
         <button 
           disabled={isLoading || !stripe || !elements} 
           id="submit" 
-          className="border p-2 bg-indigo-500 text-white rounded-md my-[5vh]"
+          className="border p-2 button-color text-gray-700 rounded-md my-[5vh]"
         >
           <span id="button-text">
             {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
