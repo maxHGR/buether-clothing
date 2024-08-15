@@ -7,7 +7,7 @@ export default function manifest() {
     theme_color: '#F7D65A',
     icons: [
       {
-        src: '/public/favicon.ico',
+        src: '/app/icon.ico',
         sizes: '512x512',
         types: 'image/png'
       },

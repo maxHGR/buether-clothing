@@ -2,7 +2,7 @@
   "name": "Buether",
   "icons": [
     {
-      "src": "./../public/favicon.ico",
+      "src": "./../app/icon.ico",
       "type": "image/png",
       "sizes": "512x512"
     }
