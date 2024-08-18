@@ -8,7 +8,7 @@ export default function manifest() {
     icons: [
       {
         src: '/app/icon.ico',
-        sizes: '512x512',
+        sizes: 'any',
         types: 'image/png'
       },
     ],
