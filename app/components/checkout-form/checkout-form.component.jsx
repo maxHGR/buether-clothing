@@ -8,9 +8,11 @@ import {
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { emptyCart } from "../../store/cart/cart.reducer";
- 
+import { addPaymentReceipt } from "../../utils/firebase.utils";
+import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectCartItems } from "../../store/cart/cart.selector";
  
 
 // CheckoutForm component definition
@@ -25,6 +27,9 @@ export default function CheckoutForm() {
   // State variables for displaying messages and loading state
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const cartItems = useSelector(selectCartItems);
+  const currentUser = useSelector(selectCurrentUser);
+
 
   // Effect hook to handle payment status updates
   useEffect(() => {
@@ -44,7 +49,7 @@ export default function CheckoutForm() {
         // Set message based on payment intent status
         switch (paymentIntent.status) {
           case "succeeded":
-            setMessage("Payment succeeded!");
+            setMessage("Payment succeeded!")
             break;
           case "processing":
             setMessage("Your payment is processing.");
@@ -56,9 +61,10 @@ export default function CheckoutForm() {
             setMessage("Something went wrong.");
             break;
         }
-      });
+      })
     }
   }, [stripe]);
+  
 
   // Handle form submission
   const handleSubmit = async (e) => {
@@ -92,10 +98,11 @@ export default function CheckoutForm() {
 
     // Reset loading state
     await setIsLoading(false)
-    if(paymentIntent) {
+    if(paymentIntent.status === 'succeeded') {
 
       // call API to save purchase in account of user <<<<<<<<<<<<<<<<<<<<<<<<<
-
+      
+      addPaymentReceipt(cartItems, currentUser.uid);
       dispatch(emptyCart());
       router.push('/payment-success')
     }

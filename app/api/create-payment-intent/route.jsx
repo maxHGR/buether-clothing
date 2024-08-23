@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import Stripe from "stripe";
-
+import { signOutUser } from "../../utils/firebase.utils";
 // Import the Stripe SDK and initialize it with the secret API key
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -9,6 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(NextRequest) {
   const {data} = await NextRequest.json();
   const {amount, items} = data;
+  signOutUser();
 
   /*
       calculate the amount from the items you receive here on the server

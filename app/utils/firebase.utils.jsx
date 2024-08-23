@@ -19,6 +19,8 @@ import {
   query,
   getDocs,
 } from 'firebase/firestore';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../store/user/user.selector';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA6ek-s2v3RLJ4u4Tvld3jETgZcKBZ8luA",
@@ -36,6 +38,7 @@ const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: 'select_account',
 });
+
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
@@ -61,6 +64,15 @@ export const addCollectionAndDocuments = async (
   await batch.commit();
   console.log('done');
 };
+
+export const addPaymentReceipt = async (purchasedItems, userID) => {
+  const timestamp = Date(); // Generates a unique timestamp
+  const collectionRef = collection(db, `users/${userID}/payment-receipts`);
+  const docRef = doc(collectionRef, timestamp); // Use formatted date as document ID
+  // cartItems = [{...}, {...}, {...}]
+
+  await setDoc(docRef, {purchasedItems})
+}
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, 'categories');

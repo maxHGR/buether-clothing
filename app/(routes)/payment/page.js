@@ -27,8 +27,9 @@ const Payment = () => {
       setClientSecret(data)
     }
     createPaymentIntent();
-    // add code that erases cart after successful payment
+    
   }, [cartTotal]);
+
 
 const appearance = {
   theme: 'stripe',
