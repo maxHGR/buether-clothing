@@ -69,9 +69,24 @@ export const addPaymentReceipt = async (purchasedItems, userID) => {
   const timestamp = Date(); // Generates a unique timestamp
   const collectionRef = collection(db, `users/${userID}/payment-receipts`);
   const docRef = doc(collectionRef, timestamp); // Use formatted date as document ID
-  // cartItems = [{...}, {...}, {...}]
 
   await setDoc(docRef, {purchasedItems})
+}
+
+export const getCollection = async (userID) => {
+  //retrieve userID where this function is implemented
+  const collectionRef = collection(db, `users/${userID}/payment-receipts`);
+  const querySnapshot = await getDocs(collectionRef);
+  const data = [];
+  querySnapshot.forEach((doc) => {
+    const labeledData = [doc.id, doc.data()]
+
+    data.unshift(labeledData);
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+  //return something !!! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  return data;
 }
 
 export const getCategoriesAndDocuments = async () => {

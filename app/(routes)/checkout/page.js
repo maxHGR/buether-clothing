@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import emptyIcon from '/app/assets/icons/checkout/cactus.png'
 import { addPaymentReceipt } from '../../utils/firebase.utils';
+import { getCollection } from '../../utils/firebase.utils';
 
 const Checkout = () => {
     // State variable to store the client secret received from the server

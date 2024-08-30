@@ -8,7 +8,7 @@ import SignInForm from "../../components/sign-in/sign-in.component"
 import SignUpForm from "../../components/sign-up/sign-up.component"
 import { signOutUser } from "../../utils/firebase.utils"
 import { signOutCurrentUser } from "../../store/user/user.reducer"
-
+import LastPurchases from "/app/components/last-purchases/last-purchases.component.jsx"
 
 const Authentication = () => {
   const dispatch = useDispatch();
@@ -27,8 +27,6 @@ const Authentication = () => {
     signOutNotify();
   };
 
-  console.log(currentUser)
-
   return (
     <>
       { currentUser !== null ? (
@@ -41,7 +39,11 @@ const Authentication = () => {
         <div className="flex justify-end mr-[5vw]">
             <button onClick={handleSignOut} className=" mt-14 mb-5 p-2 bg-red-600 text-white rounded-md">Sign out</button>
         </div>
-        
+
+        <div className="bg-[#F7D65A] pt-10">
+          <LastPurchases />
+        </div>
+
         </div>
       ) : (
         <div className='flex flex-row flex-wrap justify-around items-center lg:max-w-[70vw] lg:max-h-[30vh] lg:mx-auto'>

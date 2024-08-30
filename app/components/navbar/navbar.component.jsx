@@ -36,7 +36,6 @@ const Navbar = () => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
         createUserDocumentFromAuth(user);
-        console.log(user.uid);
         dispatch(setCurrentUser(user));
       }
     });
