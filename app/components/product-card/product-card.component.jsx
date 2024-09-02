@@ -34,7 +34,7 @@ export const ProductCard = ({product, category}) => {
         <p>{category}</p>
         <h2 className="text-lg">{`€${price}`}</h2>
         <div className="flex justify-end">
-          <button className="button-color border text-gray-900 p-2 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
+          <button className="button-color shadow-md border text-gray-900 p-2 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
         </div>
       </div>
     </div>

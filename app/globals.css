@@ -41,10 +41,10 @@ html {
 
 @keyframes rollInOut {
   0% {
-    transform: translateX(-170%) rotate(0deg);
+    transform: translateX(-180%) rotate(0deg);
   }
   100% {
-    transform: translateX(170%) rotate(360deg);
+    transform: translateX(180%) rotate(360deg);
   }
 }
 
