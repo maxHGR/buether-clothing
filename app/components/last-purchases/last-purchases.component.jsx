@@ -9,14 +9,9 @@ export const LastPurchases = () => {
   const currentUser = useSelector(selectCurrentUser);
   const [receipts, setReceipts] = useState();
   
-//        Array with Object
-  console.log(receipts)
-  
   useEffect(() => {
     const retrieveReceipts = async() => {
       let collection = await getCollection(currentUser.uid);
-      console.log(collection.id)
-      console.log(collection)
       setReceipts(collection);
     }
     retrieveReceipts();
@@ -30,17 +25,12 @@ export const LastPurchases = () => {
     retrieveReceipts();
   }
 
-  // Flatten the purchased items array
-  //const purchasedItems = receipts?.flatMap(receipt => receipt.purchasedItems);
-
   return (
     <div>
       { receipts ? (
         <div className='flex flex-col items-center gap-y-8'>
           <h2 className='mb-8 text-2xl tracking-wider'>Last Purchases</h2>
           {receipts.map((item) => {
-            // Array of Objects
-            console.log(item[1].purchasedItems[0]);
 
             const date = new Date(item[0]).toLocaleString('en-US', { 
             year: 'numeric', 
@@ -64,7 +54,7 @@ export const LastPurchases = () => {
                     </div>
                   </div>
                 ))}
-                <h3 className='text-center'>Total Purchase Price: ${totalPurchasePrice}</h3>
+                <h3 className='text-center'>Total Purchase Price: ${totalPurchasePrice.toFixed(2)}</h3>
               </div>
             );
           })}
@@ -82,8 +72,6 @@ export const LastPurchases = () => {
       { receipts ? (
         <>
           {receipts.map((item) => {
-            // Array of Objects
-            console.log(item[1].purchasedItems[0]);
             const date = item[0];
             // map() extracts the name, price,... from the passed in product object
             return (

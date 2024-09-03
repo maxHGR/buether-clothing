@@ -83,7 +83,7 @@ export const getCollection = async (userID) => {
 
     data.unshift(labeledData);
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    //console.log(doc.id, " => ", doc.data());
   });
   //return something !!! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   return data;
@@ -142,3 +142,13 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe(); // Unsubscribe from the listener once we get the user
+      resolve(user);
+      return user;
+    }, reject);
+  });
+};

@@ -12,6 +12,8 @@ const CartDropdown = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
+  const cartTotalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+
 
   return (
     <div className="absolute w-72 h-80 flex flex-col justify-between px-5 py-2 border border-black bg-white z-10">
@@ -21,11 +23,16 @@ const CartDropdown = () => {
         ) : (
           <div className="flex flex-col items-center gap-y-10 my-auto">
             <Image src={tumbleweedPicture} height={100} width={100} alt="tumbleweed" className="tumbleweed"/>
-            <p className="text-lg mt-auto tracking-[2rem]">EMPTY</p>
           </div>
         )}
       </div>
-      <Link className="mt-4 ml-auto border border-green-500 p-1 rounded-sm" href='/checkout'>CHECKOUT</Link>
+      <div className="mt-4 flex justify-between items-center w-full h-1/6">
+        <div className="flex justify-between gap-x-2">
+          <p className="font-bold">Total:</p>
+          <p>$ {cartTotalPrice.toFixed(2)}</p>
+        </div>
+        <Link className="w-fit border border-green-500 p-1 rounded-sm" href='/checkout'>CHECKOUT</Link>
+      </div>
     </div>
   )
 }

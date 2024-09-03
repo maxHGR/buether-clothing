@@ -10,19 +10,12 @@ import CheckoutItem from '../../components/checkout-item/checkout-item.component
 import Link from 'next/link';
 import Image from 'next/image';
 import emptyIcon from '/app/assets/icons/checkout/cactus.png'
-import { addPaymentReceipt } from '../../utils/firebase.utils';
-import { getCollection } from '../../utils/firebase.utils';
 
 const Checkout = () => {
     // State variable to store the client secret received from the server
     const cartItems = useSelector(selectCartItems);
     const cartTotal = useSelector(selectCartTotal);
-    const currentUser = useSelector(selectCurrentUser); 
-     
 
-    const receiptHandler = async() => {  
-      addPaymentReceipt(cartItems, currentUser.uid);
-    }
 
   return (
     <div className='flex-row justify-between'>
@@ -46,10 +39,9 @@ const Checkout = () => {
             return <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
           })}
         </div>
-        <div className='flex justify-end my-8'>
-          <h2 className='mr-[10vw]'>Total: {cartTotal.toFixed(2)}</h2>
+        <div className='flex justify-end my-10'>
+          <h2 className='mr-[10vw] text-xl'>Total: {cartTotal.toFixed(2)}</h2>
         </div>
-        <button onClick={receiptHandler}>Receipt</button>
         <div className='flex justify-end'>
           <Link href="/payment" className='bg-[#F7D65A] text-black rounded-md p-2 mr-[10vw] text-lg '>Payment</Link>
         </div>

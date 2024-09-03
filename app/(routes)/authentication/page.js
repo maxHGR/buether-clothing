@@ -15,6 +15,7 @@ const Authentication = () => {
   const currentUser = useSelector(selectCurrentUser);
   const formContainer = 'flex basis-1/1 sm:basis-1/3 h-[55vh] min-h-fit min-w-max mb-5 p-2 justify-center items-center border-2 border-indigo-500 rounded-lg';
 
+
   const signOutNotify = () => toast.info("signed out", {
     progress: undefined,
     theme: "colored",
@@ -33,13 +34,12 @@ const Authentication = () => {
         <div className="flex-col justify-around ">
           
         <div className="justify-center gap-10 p-[5vw] mx-auto bg-[#F7D65A] rounded-md h-full w-[80vw]">
-            <div className=" text-xl">{`Hello ${currentUser.displayName}`}</div>
+            <div className=" text-xl">{`Hello ${ currentUser.displayName === null ? currentUser.email.split('@')[0] : currentUser.displayName }`}</div>
             <div className="mt-[5vh]">{`Email: ${currentUser.email}`}</div>
         </div>
         <div className="flex justify-end mr-[5vw]">
             <button onClick={handleSignOut} className=" mt-14 mb-5 p-2 bg-red-600 text-white rounded-md">Sign out</button>
         </div>
-
         <div className="bg-[#F7D65A] pt-10">
           <LastPurchases />
         </div>
