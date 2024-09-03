@@ -11,10 +11,7 @@ export const LastPurchases = () => {
   const [expandedReceipt, setExpandedReceipt] = useState("");
 
   const toggleReceipt = (date) => {
-    console.log(date)
-    //if (expandedReceipt === date) return;
-
-    setExpandedReceipt(date);
+    setExpandedReceipt(expandedReceipt === date ? "" : date);
   }
   
   useEffect(() => {
