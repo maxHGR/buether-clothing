@@ -4,7 +4,7 @@ export default function manifest() {
     description: 'E-Commerce Website for Clothing',
     start_url: 'https://ether-clothing.vercel.app/',
     display: 'standalone',
-    background_color: '#F7D65A',
+    background_color: '#FFFFFF',
     theme_color: '#F7D65A',
     icons: [
       {
