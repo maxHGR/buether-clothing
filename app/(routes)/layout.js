@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Buether",
-  description: "",
+  description: "E-Commerce Website for Clothing",
   manifest: "manifest.js",
 };
 
