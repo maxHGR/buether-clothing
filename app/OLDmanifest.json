@@ -1,0 +1,15 @@
+{
+  "name": "Buether",
+  "icons": [
+    {
+      "src": "/app/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://ether-clothing.vercel.app/",
+  "display": "fullscreen",
+  "background_color": "#F7D65A",
+  "theme_color": "#F7D65A"
+
+}
