@@ -32,9 +32,9 @@ export const ProductCard = ({product, category}) => {
       <div className="p-2 flex-col justify-around">
         <h1 className="text-xl mt-1">{name}</h1>
         <p>{category}</p>
-        <h2 className="text-lg">{`€${price}`}</h2>
+        <h2 className="text-lg">{`${price} $`}</h2>
         <div className="flex justify-end">
-          <button className="button-color shadow-md border text-gray-900 p-2 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
+          <button className="button-color shadow-sm border text-gray-900 p-2 rounded-md self-end" onClick={onClickHandler}>Add to Cart</button>
         </div>
       </div>
     </div>

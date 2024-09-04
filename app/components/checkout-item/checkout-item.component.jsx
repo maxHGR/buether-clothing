@@ -33,7 +33,7 @@ const CheckoutItem = ({cartItem}) => {
         {quantity}
         <div onClick={addItemHandler}>&#10095;</div>
       </div>
-      <div>{(price * quantity).toFixed(2)}</div>
+      <div>{(price * quantity).toFixed(2)} $</div>
       <br/>
       <button className='cursor-pointer' onClick={clearItemHandler}>&#10005;</button>
     </div>

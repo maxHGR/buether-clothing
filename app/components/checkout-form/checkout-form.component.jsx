@@ -1,6 +1,4 @@
-//checkoutForm.js
 "use client"
-// Import necessary dependencies and components
 import {
   PaymentElement,
   useStripe,
@@ -15,25 +13,22 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectCartItems } from "../../store/cart/cart.selector";
  
 
-// CheckoutForm component definition
 export default function CheckoutForm() {
-  // Access the Stripe instance using the useStripe hook
   const stripe = useStripe();
   const dispatch = useDispatch();
-  // Access the Elements instance using the useElements hook
   const elements = useElements();
   const router = useRouter();
 
-  // State variables for displaying messages and loading state
-  const [message, setMessage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const cartItems = useSelector(selectCartItems);
   const currentUser = useSelector(selectCurrentUser);
+
+  const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   // Effect hook to handle payment status updates
   useEffect(() => {
-    // Check if Stripe instance is available
+
     if (!stripe) {
       return;
     }
@@ -66,26 +61,18 @@ export default function CheckoutForm() {
   }, [stripe]);
   
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Check if Stripe and Elements instances are available
-    if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
+    if (!stripe || !elements) return;
 
-    // Set loading state
     setIsLoading(true);
 
-    // Confirm payment with Stripe
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       redirect: 'if_required',
     });
 
-    // Handle payment confirmation result
+
     if (error) {
       if (error.type === "card_error" || error.type === "validation_error") {
         setMessage(error.message);
@@ -93,34 +80,24 @@ export default function CheckoutForm() {
       } else {
         setMessage("An unexpected error occurred.");
       }
-
     }
 
-    // Reset loading state
     await setIsLoading(false)
+    
     if(paymentIntent.status === 'succeeded') {
-
-      // call API to save purchase in account of user <<<<<<<<<<<<<<<<<<<<<<<<<
-      
       addPaymentReceipt(cartItems, currentUser.uid);
       dispatch(emptyCart());
       router.push('/payment-success')
     }
   };
 
-  // Payment element options
   const paymentElementOptions = {
     layout: "tabs",
   };
 
-  // Render form with payment element, submit button, and message display
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-
-      {/* PaymentElement component for Stripe.js integration */}
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-
-      {/* Submit button with loading spinner */}
       <div className="flex justify-end">
         <button 
           disabled={isLoading || !stripe || !elements} 
@@ -132,7 +109,6 @@ export default function CheckoutForm() {
           </span>
         </button>
       </div>
-      {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>
   );

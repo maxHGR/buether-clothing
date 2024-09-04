@@ -29,7 +29,7 @@ const CartDropdown = () => {
       <div className="mt-4 flex justify-between items-center w-full h-1/6">
         <div className="flex justify-between gap-x-2">
           <p className="font-bold">Total:</p>
-          <p>$ {cartTotalPrice.toFixed(2)}</p>
+          <p>{cartTotalPrice.toFixed(2)} $</p>
         </div>
         <Link className="w-fit border border-green-500 p-1 rounded-sm" href='/checkout'>CHECKOUT</Link>
       </div>

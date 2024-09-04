@@ -10,7 +10,7 @@ const CartItem = ({ cartItem }) => {
       <div className="flex flex-col items-center justify-center w-2/3 text-base">
         <span>{name}</span>
         <span>
-          {quantity} x ${price}
+          {quantity} x {price} $
         </span>
       </div>
     </div>

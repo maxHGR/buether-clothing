@@ -40,7 +40,7 @@ const Checkout = () => {
           })}
         </div>
         <div className='flex justify-end my-10'>
-          <h2 className='mr-[10vw] text-xl'>Total: {cartTotal.toFixed(2)}</h2>
+          <h2 className='mr-[10vw] text-xl'>Total: {cartTotal.toFixed(2)} $</h2>
         </div>
         <div className='flex justify-end'>
           <Link href="/payment" className='bg-[#F7D65A] text-black rounded-md p-2 mr-[10vw] text-lg '>Payment</Link>

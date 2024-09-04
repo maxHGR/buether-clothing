@@ -19,8 +19,7 @@ import {
   query,
   getDocs,
 } from 'firebase/firestore';
-import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../store/user/user.selector';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyA6ek-s2v3RLJ4u4Tvld3jETgZcKBZ8luA",
@@ -74,7 +73,6 @@ export const addPaymentReceipt = async (purchasedItems, userID) => {
 }
 
 export const getCollection = async (userID) => {
-  //retrieve userID where this function is implemented
   const collectionRef = collection(db, `users/${userID}/payment-receipts`);
   const querySnapshot = await getDocs(collectionRef);
   const data = [];
@@ -85,7 +83,6 @@ export const getCollection = async (userID) => {
     // doc.data() is never undefined for query doc snapshots
     //console.log(doc.id, " => ", doc.data());
   });
-  //return something !!! <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
   return data;
 }
 
@@ -142,13 +139,3 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
-
-export const getCurrentUser = () => {
-  return new Promise((resolve, reject) => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      unsubscribe(); // Unsubscribe from the listener once we get the user
-      resolve(user);
-      return user;
-    }, reject);
-  });
-};

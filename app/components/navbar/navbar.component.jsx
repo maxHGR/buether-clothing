@@ -6,8 +6,7 @@ import { useSelector } from "react-redux"
 import { useParams, usePathname } from "next/navigation"
 import { useDispatch } from "react-redux"
 import { onAuthStateChangedListener, createUserDocumentFromAuth, signOutUser } from "../../utils/firebase.utils"
-import { setCurrentUser, signOutCurrentUser } from "../../store/user/user.reducer"
-import { toast, Bounce } from "react-toastify";
+import { setCurrentUser } from "../../store/user/user.reducer"
 
 
 import etherIconWhite from "./../../assets/icons/logo/ether-clothing-favicon-white.png"
@@ -47,7 +46,6 @@ const Navbar = () => {
     dispatch(setIsCartOpen(false));
   }, [pathname])
 
-
   const [paths, setPaths] = useState([
     "hats", 
     "jackets",
@@ -80,7 +78,7 @@ const Navbar = () => {
           paths.map((path) => {
             return <Link key={path} href={`/shop/${path}`}>{path}</Link>
           })
-        ) : ''
+        ) : ("")
       }
     </div>
     {isCartOpen && <CartDropdown />}

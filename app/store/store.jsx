@@ -14,18 +14,7 @@ const persistConfig = {
   storage,
 }
 
-/* old approach
-export const makeStore = () => {
-  return configureStore({
-      reducer: rootReducer,
-      middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(middleWares),
-  });
-};
-*/
-
-//checking if server or client, and creating persisted Reducer on client
-
+// checking if server or client, and creating persisted Reducer on client, and root reducer on server
 export const makeStore = () => {
   const isServer = typeof window === 'undefined'
   if (isServer) {
@@ -41,4 +30,16 @@ export const makeStore = () => {
     })
     store.__persistor = persistStore(store)
     return store
-  }}
+  }};
+
+
+  
+/* old approach
+export const makeStore = () => {
+  return configureStore({
+      reducer: rootReducer,
+      middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(middleWares),
+  });
+};
+*/
