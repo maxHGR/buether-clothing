@@ -97,7 +97,7 @@ const SignInForm = () => {
           value={password}
         />
         <div className="flex-row justify-between">
-          <button type='submit' className='border border-gray-800 p-1 my-2 rounded-md'>Sign In</button>
+          <button type='submit' className='border border-gray-700 p-1 my-2 rounded-md'>Sign In</button>
           <br/>
           <button
             type='button'
@@ -108,7 +108,6 @@ const SignInForm = () => {
           </button>
         </div>
       </form>
-      
     </div>
   );
 };

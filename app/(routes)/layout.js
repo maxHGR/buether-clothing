@@ -3,9 +3,11 @@ import "./../globals.css";
 import Navbar from "../components/navbar/navbar.component";
 import StoreProvider from "../store/provider/provider.store";
 import { Bounce, ToastContainer } from "react-toastify";
+import Footer from "../components/footer/footer.component";
 
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Buether",
@@ -52,6 +54,7 @@ export default function RootLayout({ children }) {
           />
           <Navbar />
           {children}
+          <Footer />
         </StoreProvider>
       </body>
     </html>

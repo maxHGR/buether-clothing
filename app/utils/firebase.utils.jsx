@@ -25,7 +25,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyA6ek-s2v3RLJ4u4Tvld3jETgZcKBZ8luA",
   authDomain: "ether-clothing-db.firebaseapp.com",
   projectId: "ether-clothing-db",
-  storageBucket: "ether-clothing-db.appspot.com",
+  storageBucket: "ether-clothing-db.firebasestorage.app",
   messagingSenderId: "429477406957",
   appId: "1:429477406957:web:a51262fc30b1b50be944e4"
 };

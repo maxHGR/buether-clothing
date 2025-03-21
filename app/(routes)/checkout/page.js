@@ -24,7 +24,7 @@ const Checkout = () => {
     </div>
     {
       cartItems.length === 0 ? (
-        <div className='  mt-20'>
+        <div className='mt-20 mb-20'>
         <div className='flex justify-center '>
           <Image src={emptyIcon} height={250} width={250} alt='sad cactus' />
         </div>
