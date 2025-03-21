@@ -10,6 +10,23 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Buether",
   description: "E-Commerce Website for Clothing",
+  icons: [
+     {
+      "url": "/buether.favicon.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg"
+    },
+    {
+      "url": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "url": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+    ],
   manifest: "manifest.js",
 };
 
