@@ -3,7 +3,7 @@ export default function manifest() {
     name: 'Buether Clothing',
     short_name: 'Buether',
     description: 'E-Commerce Website for Clothing',
-    start_url: '/',
+    start_url: 'https://buether.vercel.app/',
     display: 'standalone',
     background_color: '#FFFFFF',
     theme_color: '#F7D65A',
@@ -11,7 +11,7 @@ export default function manifest() {
      {
       "src": "/buether.favicon.svg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/svg"
+      "type": "image/svg+xml"
     },
     {
       "src": "/icon-192x192.png",
