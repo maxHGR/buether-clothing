@@ -6,12 +6,17 @@ export default function manifest() {
     display: 'standalone',
     background_color: '#FFFFFF',
     theme_color: '#F7D65A',
-    icons: [
-      {
-        src: '/app/icon.ico',
-        sizes: 'any',
-        types: 'image/png'
-      },
-    ],
+    "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
   }
 }
