@@ -16,7 +16,7 @@ const CartDropdown = () => {
 
 
   return (
-    <div className="absolute w-72 h-80 flex flex-col justify-between px-5 py-2 border border-black bg-white z-10">
+    <div className="absolute right-0 w-72 h-80 flex flex-col justify-between px-5 py-2 border border-black bg-white z-10">
       <div className="w-64 h-full flex flex-col items-center overflow-scroll overflow-x-hidden" label="Cart-Items">
       {cartItems.length ? (
           cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
